@@ -36,6 +36,10 @@ cron.schedule("59 59 23 * * 0-4", function () {
   randomPriceSocket("setLast");
 });
 
+cron.schedule("0 */8 * * 0-4", function () {
+  randomPriceSocket();
+});
+
 app.post(
   "/webhook-checkout",
   express.raw({ type: "application/json" }),
