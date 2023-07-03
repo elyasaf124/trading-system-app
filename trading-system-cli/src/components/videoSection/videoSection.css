@@ -1,0 +1,44 @@
+.video-section {
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.video-section-container {
+  width: 85%;
+  margin: 0 auto;
+}
+
+.video-section-title {
+  font-size: 80px;
+  margin-bottom: 25px;
+}
+
+.video-section-desc {
+  font-size: 30px;
+}
+
+.video-section-btn {
+  margin-top: 20px;
+  border: none;
+  border-radius: 56px;
+  background-color: #2962ff;
+  padding: 18px 30px;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.video-section-btn:hover {
+  background-color: #1e53e5;
+}
+
+.space-white {
+  height: 100px;
+}
+
+.video {
+  z-index: -1;
+}

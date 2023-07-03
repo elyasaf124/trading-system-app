@@ -1,0 +1,51 @@
+.market-bubble-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 20%;
+  padding: 16px 16px;
+  border-radius: 16px;
+}
+.market-bubble-container.select {
+  -webkit-box-shadow: 0px 0px 9px -1px rgba(58, 58, 58, 0.65);
+  box-shadow: 0px 0px 9px -1px rgba(58, 58, 58, 0.65);
+}
+
+.market-bubble-container:hover {
+  background-color: #f0f3fa;
+}
+
+.market-bubble-icon {
+  color: red;
+  width: 36px;
+  height: 36px;
+}
+
+.market-bubble-title {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.market-bubble-details {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.market-bubble-price-container {
+  display: flex;
+  gap: 10px;
+  font-size: 16px;
+}
+
+.market-bubble-price span {
+  font-size: 10px;
+}
+
+.market-bubble-price-percentage.green {
+  color: green;
+}
+
+.market-bubble-price-percentage.red {
+  color: red;
+}

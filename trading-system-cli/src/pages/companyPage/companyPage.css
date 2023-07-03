@@ -1,0 +1,108 @@
+.company-page {
+  display: flex;
+  flex-direction: column;
+}
+.company-page-container {
+  width: 90%;
+  margin: 0 auto;
+  position: relative;
+  top: 150px;
+}
+
+.company-details-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.company-box {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.company-details-top {
+  display: flex;
+  gap: 15px;
+}
+
+.company-details-img {
+  height: 112px;
+  width: 112px;
+  border-radius: 50%;
+}
+
+.company-details-name {
+  padding: 0;
+  margin: 0;
+  font-size: 48px;
+}
+
+.company-details-buttom {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.current-price {
+  padding: 0;
+  margin: 0;
+  font-size: 42px;
+}
+
+.price-precentage {
+  font-size: 18px;
+  color: green;
+}
+
+.currency-type {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.update-date {
+  opacity: 0.6;
+  font-weight: 500;
+}
+
+.company-chart-top {
+  display: flex;
+  align-items: center;
+}
+
+.date-bar-container {
+  border: 1px solid rgba(0, 0, 0, 0.239);
+  border-radius: 20px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+.date-bar-ul {
+  display: flex;
+  list-style-type: none;
+  justify-content: space-around;
+  align-items: center;
+  gap: 5px;
+  margin: 0;
+  padding: 5px 5px;
+}
+
+.date-bar-li-container {
+  padding: 15px;
+  text-align: center;
+  border-radius: 15px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.date-bar-li-container.selected {
+  background-color: rgba(255, 0, 0, 0.584);
+}
+
+.date-bar-li.green {
+  color: green;
+  font-weight: bold;
+}
+.date-bar-li.red {
+  color: red;
+  font-weight: bold;
+}

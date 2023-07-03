@@ -1,0 +1,13 @@
+:root {
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-feature-settings: "tnum" on, "lnum" on;
+  color: #131722;
+  font-family: -apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu,
+    sans-serif;
+  font-size: 18px;
+  padding: 0;
+  margin: 0;
+}

@@ -1,0 +1,21 @@
+.stock-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.stock-table th,
+.stock-table td {
+  padding: 8px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.stock-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.stock-table img {
+  max-width: 50px;
+  max-height: 50px;
+}

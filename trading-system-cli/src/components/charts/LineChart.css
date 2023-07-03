@@ -1,0 +1,14 @@
+.chart-container {
+  width: 100%;
+  margin-top: 50px;
+}
+
+.chart-container .chartLine canvas {
+  background-color: red;
+}
+
+canvas.chartLine {
+  position: relative;
+  width: 100% !important;
+  height: 200px !important;
+}

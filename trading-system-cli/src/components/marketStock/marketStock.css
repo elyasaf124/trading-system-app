@@ -1,0 +1,91 @@
+.market-stock {
+  width: 25%;
+  border: 2px solid rgba(0, 0, 0, 0.191);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.market-stock-container {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 40px;
+}
+
+.market-stock-title {
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.buy-sell-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+}
+
+.buy-container {
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  background-color: #f0f3fa;
+  color: #b2b5be;
+  padding: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.sell-container {
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #f0f3fa;
+  color: #b2b5be;
+  padding: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.sell-container.selected {
+  background-color: #cc2f3c;
+  color: white;
+}
+.buy-container.selected {
+  background-color: #1e53e5;
+  color: white;
+}
+
+.quantity-stocks {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+
+.input-container {
+  width: 100%;
+}
+
+.quantity-stocks-input {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px 5px;
+  width: 95%;
+}
+
+.buy-sell-btn {
+  border: none;
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #1e53e5;
+  color: white;
+  cursor: pointer;
+}
