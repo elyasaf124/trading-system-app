@@ -17,6 +17,7 @@ const stockShcema = new mongoose.Schema({
   stockSymbol: String,
   icon: String,
   stockCompanyNmae: String,
+  lastStockDay: Boolean,
 });
 
 stockShcema.pre("save", function (next) {
