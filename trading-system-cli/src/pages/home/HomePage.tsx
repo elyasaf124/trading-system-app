@@ -66,7 +66,7 @@ const HomePage = () => {
           <NavBar />
         </div>
         <img
-          src="https://static.tradingview.com/static/bundles/leo-look-768.13343c42e395ce61f8db.jpg"
+          src="https://static.tradingview.com/static/bundles/leo-look-768.8381d51178dbec890175.jpg"
           alt=""
           className="home-img"
         />
