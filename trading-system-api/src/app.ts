@@ -33,7 +33,7 @@ const app = express();
 export default app;
 
 cron.schedule("59 59 23 * * 0-4", function () {
-  randomPriceSocket("setLast");
+  randomPriceSocket("lastStock");
 });
 
 cron.schedule("0 */8 * * 0-4", function () {

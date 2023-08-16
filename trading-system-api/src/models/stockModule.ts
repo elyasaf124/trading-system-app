@@ -34,7 +34,7 @@ stockShcema.pre("save", function (next) {
   // const year = randomDate.getFullYear();
   // const formattedDate = `${day}/${month}/${year}`;
   // this.dateFormat = formattedDate;
-  // this.lastStockDay = true;
+
   next();
 });
 

@@ -14,7 +14,7 @@ export const randomPriceSocket = async (setLast?: string) => {
         const newPrice = Math.floor(Math.random() * (max - min + 1)) + min;
 
         let newStock;
-        if (setLast === "setLast") {
+        if (setLast === "lastStock") {
           newStock = await Stock.create({
             companyIdRef: company._id,
             stockPrice: newPrice,
