@@ -25,6 +25,7 @@ export const getStockByDate = async (
   next: NextFunction
 ) => {
   try {
+    console.log("req.params.date", req.params.date);
     let matchCriteria: any;
     switch (req.params.date) {
       case "two-years":
@@ -90,10 +91,15 @@ export const getEarlyStockByDate = async (
   next: NextFunction
 ) => {
   try {
+    //current time in seconds
     const desiredTimestamp = Date.now() / 1000;
+    console.log("desiredTimestamp", desiredTimestamp);
     const timeRange = req.params.timeRange;
+    console.log("timeRange", timeRange);
+    //current time in milliseconds
     const currentDate = new Date();
     currentDate.setHours(0, 0, 0, 0);
+    //the start of the current day in seconds
     const currentDateDay = Math.floor(currentDate.getTime() / 1000);
 
     let rangeSeconds = 0;
@@ -115,6 +121,9 @@ export const getEarlyStockByDate = async (
     } else if (timeRange === "All time") {
       rangeSeconds = desiredTimestamp; // all time in seconds
     }
+
+    console.log("less then", desiredTimestamp + 86400);
+    console.log("greater then", desiredTimestamp - rangeSeconds);
 
     let ids = req.query.ids;
     if (typeof ids === "string") {

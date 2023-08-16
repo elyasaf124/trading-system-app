@@ -8,12 +8,12 @@ import { useSelector } from "react-redux";
 type IStockAndCompanys = {
   data: IStockAndCompany;
   dateString: String;
-  getDateDataStock: (e: any, id?: string) => void;
+  getDataStockByDate: (e: any, id?: string) => void;
 };
 
 const MarketBubble = ({
   data,
-  getDateDataStock,
+  getDataStockByDate,
   dateString,
 }: IStockAndCompanys) => {
   const dispatch = useDispatch();
@@ -50,7 +50,7 @@ const MarketBubble = ({
 
   const selectMarketCompany = async () => {
     dispatch(setMarketSummarySelect(data.company._id));
-    getDateDataStock(dateString, data.company._id);
+    getDataStockByDate(dateString, data.company._id);
   };
 
   return (

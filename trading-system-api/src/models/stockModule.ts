@@ -14,6 +14,7 @@ const stockShcema = new mongoose.Schema({
     type: Number,
     default: Date.now,
   },
+  dateFormat: String,
   stockSymbol: String,
   icon: String,
   stockCompanyNmae: String,
@@ -27,6 +28,13 @@ stockShcema.pre("save", function (next) {
   //   Math.floor(Math.random() * (Date.now() - oneYearAgoTimestamp + 1)) +
   //   oneYearAgoTimestamp;
   // this.createdAt = Math.floor(randomTimestamp / 1000);
+  // const randomDate = new Date(randomTimestamp);
+  // const day = String(randomDate.getDate()).padStart(2, "0");
+  // const month = String(randomDate.getMonth() + 1).padStart(2, "0");
+  // const year = randomDate.getFullYear();
+  // const formattedDate = `${day}/${month}/${year}`;
+  // this.dateFormat = formattedDate;
+  // this.lastStockDay = true;
   next();
 });
 

@@ -16,6 +16,7 @@ import CircleSpinner from "../../components/spinners/circleSpinner/CircleSpinner
 import Search from "../../components/search/Search";
 import { setSearchMode } from "../../features/loginMoodSlice";
 import { socket } from "../../socket";
+import homeImg from "../../images/leo-look-768.8381d51178dbec890175.jpg";
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -66,7 +67,8 @@ const HomePage = () => {
           <NavBar />
         </div>
         <img
-          src="https://static.tradingview.com/static/bundles/leo-look-768.8381d51178dbec890175.jpg"
+          src={homeImg}
+          // src="https://static.tradingview.com/static/bundles/leo-look-768.8381d51178dbec890175.jpg"
           alt=""
           className="home-img"
         />

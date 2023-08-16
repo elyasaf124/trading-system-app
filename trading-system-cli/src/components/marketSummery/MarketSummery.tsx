@@ -32,7 +32,7 @@ const MarketSummery = () => {
     }
   }, [newData]);
 
-  const getDateDataStock = async (e: any, id?: string) => {
+  const getDataStockByDate = async (e: any, id?: string) => {
     let dateStringVarb;
     let idCompany;
     if (typeof e === "string") {
@@ -67,12 +67,7 @@ const MarketSummery = () => {
       <div className="market-summery-container">
         <h3 className="market-summery-title">Market summery&gt;</h3>
         <ul className="market-summery-ul">
-          <li className="market-summery-li selected">Indices</li>
-          <li className="market-summery-li">Stocks</li>
-          <li className="market-summery-li">Crypto</li>
-          <li className="market-summery-li">Forex</li>
-          <li className="market-summery-li">Futures</li>
-          <li className="market-summery-li">Bonds</li>
+          <li className="market-summery-li selected">Stocks</li>
         </ul>
         <div className="markets-bubbles-box">
           {companiesAndStocks.map((data: IStockAndCompany) => {
@@ -80,7 +75,7 @@ const MarketSummery = () => {
               <MarketBubble
                 key={data.company._id}
                 data={data}
-                getDateDataStock={getDateDataStock}
+                getDataStockByDate={getDataStockByDate}
                 dateString={dateString}
               />
             );
@@ -89,7 +84,7 @@ const MarketSummery = () => {
         <DonCheart companiesAndStocks={companiesAndStocks} />
         <ul className="choose-range-ul">
           <li
-            onClick={getDateDataStock}
+            onClick={getDataStockByDate}
             className={`choose-range-li ${
               dateString === "day" ? "selected" : ""
             }`}
@@ -98,7 +93,7 @@ const MarketSummery = () => {
             1D
           </li>
           <li
-            onClick={getDateDataStock}
+            onClick={getDataStockByDate}
             className={`choose-range-li ${
               dateString === "month" ? "selected" : ""
             }`}
@@ -107,7 +102,7 @@ const MarketSummery = () => {
             1M
           </li>
           <li
-            onClick={getDateDataStock}
+            onClick={getDataStockByDate}
             className={`choose-range-li ${
               dateString === "year" ? "selected" : ""
             }`}
@@ -116,7 +111,7 @@ const MarketSummery = () => {
             1Y
           </li>
           <li
-            onClick={getDateDataStock}
+            onClick={getDataStockByDate}
             className={`choose-range-li ${
               dateString === "two-years" ? "selected" : ""
             }`}
