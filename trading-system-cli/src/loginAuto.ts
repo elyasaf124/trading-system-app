@@ -9,7 +9,7 @@ export const loginAuto = async () => {
     await axios
       .create({ withCredentials: true })
       .post(`${baseUrl}/user/login`, {
-        email: "elyasaf124@WALLA.COM",
+        email: "elyasaf124@walla.com",
         password: "12345678",
       })
       .then((res) => {
