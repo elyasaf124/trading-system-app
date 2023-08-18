@@ -14,6 +14,7 @@ import { globalErrorHandlerNew } from "./utilitis/appError";
 import { randomPriceSocket } from "./utilitis/randomPriceStock";
 import { webhookCheckout } from "./controllers/stripeController";
 import cron from "node-cron";
+import schedule from "node-schedule";
 
 dotenv.config({ path: __dirname + `./../config.env` });
 
@@ -32,17 +33,29 @@ export const corsOptions: any = {
 const app = express();
 export default app;
 
-cron.schedule("59 23 * * * 0-7", function () {
+// cron.schedule("59 23 * * * 0-7", function () {
+//   randomPriceSocket("lastStock");
+// });
+
+schedule.scheduleJob("59 59 23 * * *", function () {
   randomPriceSocket("lastStock");
 });
 
-cron.schedule("00 00 00 * * 0-7", function () {
+schedule.scheduleJob("00 00 00 * * *", function () {
   randomPriceSocket();
 });
 
-cron.schedule("0 */8 * * 0-7", function () {
+schedule.scheduleJob("00 00 */8 * * *", function () {
   randomPriceSocket();
 });
+
+// cron.schedule("00 00 00 * * 0-7", function () {
+//   randomPriceSocket();
+// });
+
+// cron.schedule("0 */8 * * 0-7", function () {
+//   randomPriceSocket();
+// });
 
 app.post(
   "/webhook-checkout",
