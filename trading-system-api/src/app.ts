@@ -45,7 +45,7 @@ schedule.scheduleJob("00 00 00 * * *", function () {
   randomPriceSocket();
 });
 
-schedule.scheduleJob("00 00 */8 * * *", function () {
+schedule.scheduleJob("0 */8 * * *", function () {
   randomPriceSocket();
 });
 
