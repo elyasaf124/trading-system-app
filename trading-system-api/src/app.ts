@@ -32,7 +32,7 @@ export const corsOptions: any = {
 const app = express();
 export default app;
 
-cron.schedule("59 59 23 * * 0-7", function () {
+cron.schedule("59 23 * * * 0-7", function () {
   randomPriceSocket("lastStock");
 });
 
