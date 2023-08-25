@@ -58,7 +58,7 @@ schedule.scheduleJob("*/1 * * * *", function () {
   }
 });
 
-schedule.scheduleJob("*/1 * * * *", function () {
+schedule.scheduleJob("*/14 * * * *", function () {
   if (process.env.NODE_ENV === "production") {
     axios
       .get("https://trading-system-api.onrender.com/user/stayAwake")
@@ -103,5 +103,6 @@ app.use("/stock", stockRouter);
 app.use("/user", authRouter);
 app.use("/stockPortfolio", stockPortfolioRouter);
 app.use("/stripe", stripeRouter);
+
 
 app.use(globalErrorHandlerNew);

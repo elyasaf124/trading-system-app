@@ -23,7 +23,7 @@ export const stayAwake = async (
 ) => {
   try {
     console.log("stayAwake run!!");
-    res.json("run");
+    res.send("run");
   } catch (error) {
     res.status(400).json({
       status: "fail",
