@@ -49,14 +49,6 @@ schedule.scheduleJob("0 */8 * * *", function () {
   randomPriceSocket();
 });
 
-schedule.scheduleJob("*/1 * * * *", function () {
-  if (process.env.NODE_ENV === "production") {
-    axios.get("https://trading-system-api.onrender.com").catch((error) => {
-      console.log(error);
-    });
-  }
-});
-
 schedule.scheduleJob("*/14 * * * *", function () {
   if (process.env.NODE_ENV === "production") {
     axios
@@ -91,11 +83,6 @@ app.use(cors(corsOptions));
 app.use(helmet());
 app.use(morgan("dev"));
 app.use(express.json());
-
-app.use((req, res, next) => {
-  console.log("Middleware 1");
-  next();
-});
 
 app.use("/company", companyRouter);
 app.use("/stock", stockRouter);
