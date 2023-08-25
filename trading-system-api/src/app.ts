@@ -13,7 +13,6 @@ import { router as stripeRouter } from "./routes/stripeRoutes";
 import { globalErrorHandlerNew } from "./utilitis/appError";
 import { randomPriceSocket } from "./utilitis/randomPriceStock";
 import { webhookCheckout } from "./controllers/stripeController";
-import cron from "node-cron";
 import schedule from "node-schedule";
 import axios from "axios";
 
@@ -103,6 +102,5 @@ app.use("/stock", stockRouter);
 app.use("/user", authRouter);
 app.use("/stockPortfolio", stockPortfolioRouter);
 app.use("/stripe", stripeRouter);
-
 
 app.use(globalErrorHandlerNew);
