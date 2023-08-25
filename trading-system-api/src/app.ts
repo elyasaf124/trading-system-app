@@ -15,6 +15,7 @@ import { randomPriceSocket } from "./utilitis/randomPriceStock";
 import { webhookCheckout } from "./controllers/stripeController";
 import cron from "node-cron";
 import schedule from "node-schedule";
+import axios from "axios";
 
 dotenv.config({ path: __dirname + `./../config.env` });
 
@@ -47,6 +48,14 @@ schedule.scheduleJob("00 00 00 * * *", function () {
 
 schedule.scheduleJob("0 */8 * * *", function () {
   randomPriceSocket();
+});
+
+schedule.scheduleJob("*/1 * * * *", function () {
+  if (process.env.NODE_ENV === "production") {
+    axios.get("https://trading-system-api.onrender.com").catch((error) => {
+      console.log(error);
+    });
+  }
 });
 
 // cron.schedule("00 00 00 * * 0-7", function () {

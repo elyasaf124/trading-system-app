@@ -11,16 +11,10 @@ import { useDispatch } from "react-redux";
 import { setSocktData } from "./features/stockSlice";
 import { loginAuto } from "./loginAuto";
 import { useSelector } from "react-redux";
-import { stayActiveApi } from "./stayActiveApi";
-import schedule from "node-schedule";
 
 function App() {
   const dispatch = useDispatch();
   const login = useSelector((state: any) => state.auth.isLoggedIn);
-
-  schedule.scheduleJob("*/1 * * * *", function () {
-    import.meta.env.PROD ? stayActiveApi : "no";
-  });
 
   if (!login) {
     const autoLogin = confirm("Do you want auto login?");
