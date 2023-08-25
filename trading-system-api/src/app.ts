@@ -71,6 +71,11 @@ app.use(helmet());
 app.use(morgan("dev"));
 app.use(express.json());
 
+app.use((req, res, next) => {
+  console.log("Middleware 1");
+  next();
+});
+
 app.use("/company", companyRouter);
 app.use("/stock", stockRouter);
 app.use("/user", authRouter);

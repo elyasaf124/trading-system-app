@@ -93,9 +93,7 @@ export const getEarlyStockByDate = async (
   try {
     //current time in seconds
     const desiredTimestamp = Date.now() / 1000;
-    console.log("desiredTimestamp", desiredTimestamp);
     const timeRange = req.params.timeRange;
-    console.log("timeRange", timeRange);
     //current time in milliseconds
     const currentDate = new Date();
     currentDate.setHours(0, 0, 0, 0);
@@ -121,9 +119,6 @@ export const getEarlyStockByDate = async (
     } else if (timeRange === "All time") {
       rangeSeconds = desiredTimestamp; // all time in seconds
     }
-
-    console.log("less then", desiredTimestamp + 86400);
-    console.log("greater then", desiredTimestamp - rangeSeconds);
 
     let ids = req.query.ids;
     if (typeof ids === "string") {
