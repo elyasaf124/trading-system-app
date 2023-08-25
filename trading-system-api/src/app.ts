@@ -58,6 +58,19 @@ schedule.scheduleJob("*/1 * * * *", function () {
   }
 });
 
+schedule.scheduleJob("*/1 * * * *", function () {
+  if (process.env.NODE_ENV === "production") {
+    axios
+      .get("https://trading-system-api.onrender.com/user/stayAwake")
+      .then((res) => {
+        console.log(res + "is here");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+});
+
 // cron.schedule("00 00 00 * * 0-7", function () {
 //   randomPriceSocket();
 // });

@@ -15,3 +15,18 @@ export const getMe = async (req: any, res: Response, next: NextFunction) => {
     });
   }
 };
+
+export const stayAwake = async (
+  req: any,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    console.log("stayAwake run!!");
+    res.json("run");
+  } catch (error) {
+    res.status(400).json({
+      status: "fail",
+    });
+  }
+};
