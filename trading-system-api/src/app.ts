@@ -50,6 +50,8 @@ schedule.scheduleJob("0 */8 * * *", function () {
 });
 
 schedule.scheduleJob("*/1 8-18 * * 0-5", function () {
+  console.log("shcdule run");
+  console.log(process.env.NODE_ENV === "production");
   if (process.env.NODE_ENV === "production") {
     axios
       .get("https://trading-system-api.onrender.com/user/stayAwake")
