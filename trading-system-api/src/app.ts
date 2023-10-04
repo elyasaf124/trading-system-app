@@ -49,7 +49,7 @@ schedule.scheduleJob("0 */8 * * *", function () {
   randomPriceSocket();
 });
 
-schedule.scheduleJob("*/1 8-18 * * 0-5", function () {
+schedule.scheduleJob("*/1 8-18 * * 0-4", function () {
   console.log("shcdule run");
   console.log(process.env.NODE_ENV === "production");
   if (process.env.NODE_ENV === "production") {
