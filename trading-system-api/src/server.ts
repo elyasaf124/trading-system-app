@@ -26,7 +26,7 @@ const playFunctionCreateStock = () => {
 
 const stopFunctionCreateStock = () => {
   clearInterval(intervalId);
-  console.log("Stopping the function...");
+  console.log("Stopping the function....");
 };
 
 const randomPriceSocket1 = async () => {
