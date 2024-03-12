@@ -49,11 +49,11 @@ schedule.scheduleJob("0 */8 * * *", function () {
   randomPriceSocket();
 });
 
-schedule.scheduleJob("*/14 8-18 * * 0-4", function () {
-  console.log("shcdule run");
+schedule.scheduleJob("*/1 8-18 * * 0-4", function () {
+  console.log("schedule run");
   console.log(process.env.NODE_ENV === "production");
   if (process.env.NODE_ENV === "production") {
-    console.log("shcdule production in!!")
+    console.log("schedule production in!!")
     axios
       .get("https://trading-system-api.onrender.com/user/stayAwake")
       .then((res) => {
