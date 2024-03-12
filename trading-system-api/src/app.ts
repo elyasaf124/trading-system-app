@@ -53,6 +53,7 @@ schedule.scheduleJob("*/14 8-18 * * 0-4", function () {
   console.log("shcdule run");
   console.log(process.env.NODE_ENV === "production");
   if (process.env.NODE_ENV === "production") {
+    console.log("shcdule production in!!")
     axios
       .get("https://trading-system-api.onrender.com/user/stayAwake")
       .then((res) => {
