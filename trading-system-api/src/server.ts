@@ -47,7 +47,7 @@ io.on("connection", (socket) => {
 });
 
 const DB = process.env.DATABASE as string;
-
+console.log(DB)
 mongoose
   .connect(DB)
   .then(() => {

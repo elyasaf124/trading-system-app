@@ -91,40 +91,37 @@ export const getEarlyStockByDate = async (
   next: NextFunction
 ) => {
   try {
-    //current time in seconds
     const desiredTimestamp = Date.now() / 1000;
     const timeRange = req.params.timeRange;
-    //current time in milliseconds
     const currentDate = new Date();
     currentDate.setHours(0, 0, 0, 0);
-    //the start of the current day in seconds
     const currentDateDay = Math.floor(currentDate.getTime() / 1000);
 
     let rangeSeconds = 0;
 
     if (timeRange === "day" || timeRange === "Today") {
-      rangeSeconds = desiredTimestamp - currentDateDay; // 1 day in seconds
+      rangeSeconds = desiredTimestamp - currentDateDay;
     } else if (timeRange === "Week") {
-      rangeSeconds = 7 * 24 * 3600; // week days in seconds
+      rangeSeconds = 7 * 24 * 3600;
     } else if (timeRange === "month" || timeRange === "Month") {
-      rangeSeconds = 30 * 24 * 3600; // 30 days in seconds
+      rangeSeconds = 30 * 24 * 3600;
     } else if (timeRange === "6 Month") {
-      rangeSeconds = 6 * 30 * 24 * 3600; // half year in seconds
+      rangeSeconds = 6 * 30 * 24 * 3600;
     } else if (timeRange === "year" || timeRange === "Year") {
-      rangeSeconds = 365 * 24 * 3600; // 365 days in seconds
+      rangeSeconds = 365 * 24 * 3600;
     } else if (timeRange === "two-years") {
-      rangeSeconds = 2 * 365 * 24 * 3600; // 2 years in seconds
+      rangeSeconds = 2 * 365 * 24 * 3600;
     } else if (timeRange === "5 Years") {
-      rangeSeconds = 5 * 365 * 24 * 3600; // 5 years in seconds
+      rangeSeconds = 5 * 365 * 24 * 3600;
     } else if (timeRange === "All time") {
-      rangeSeconds = desiredTimestamp; // all time in seconds
+      rangeSeconds = desiredTimestamp;
     }
 
     let ids = req.query.ids;
     if (typeof ids === "string") {
-      ids = [ids]; // Convert single ID string to an array with one element
+      ids = [ids];
     } else if (!Array.isArray(ids)) {
-      ids = []; // Set default value to an empty array
+      ids = [];
     }
 
     const objectIdIds = ids.map(
@@ -137,29 +134,33 @@ export const getEarlyStockByDate = async (
           _id: { $in: objectIdIds },
         },
       },
-      { $sort: { createdAt: 1 } },
       {
-        //check to match between the fields and add just one each match and add the match stock to the match company
+        $sort: { createdAt: 1 },
+      },
+      {
         $lookup: {
-          from: "stocks", //the name in the db not model
-          localField: "_id", //the company field
-          foreignField: "companyIdRef", //the stock field
-          as: "stocks", //the name of the field can choose any name
+          from: "stocks",
+          localField: "_id",
+          foreignField: "companyIdRef",
+          as: "stocks",
         },
       },
       {
-        //reshapes the output doc filtering the stocks array based on the specified conditions.
         $project: {
           _id: 0,
-          company: "$$ROOT", //point to the entire doc
+          company: "$$ROOT",
+          stocks: { $slice: ["$stocks", 80] }, // Limit to 100 stocks before filtering
+        },
+      },
+      {
+        $project: {
+          company: 1,
           stocks: {
             $filter: {
-              input: "$stocks", //the array from $lookup stage
+              input: "$stocks",
               as: "stock",
               cond: {
-                // specifies the condition or filter criteria to apply to each element of the input array
                 $and: [
-                  //for multi condition
                   {
                     $gte: [
                       "$$stock.createdAt",
@@ -174,35 +175,29 @@ export const getEarlyStockByDate = async (
         },
       },
       {
-        $unwind: "$stocks", //take the all docs for stocks array and saprate them
+        $unwind: "$stocks",
       },
       {
         $sort: {
-          "stocks.createdAt": 1, //sort them
+          "stocks.createdAt": 1,
         },
       },
       {
         $group: {
-          //reconected
           _id: "$company._id",
           company: { $first: "$company" },
           stocks: { $push: "$stocks" },
         },
       },
-      {
-        $project: {
-          company: 1,
-          stocks: 1,
-          // "company.stocks": 0, //0 = exclude the field, 1 = include
-        },
-      },
     ]);
 
     if (timeRange !== "day" && timeRange !== "Today") {
+      console.log(data)
       data[0].stocks = data[0].stocks.filter((stock: any) => {
         return stock.lastStockDay === true;
       });
     }
+
     res.status(200).json({
       status: "success",
       data,
@@ -212,6 +207,7 @@ export const getEarlyStockByDate = async (
     res.status(500).send("Internal Server Error");
   }
 };
+
 
 export const getStasStock = async (
   req: Request,
