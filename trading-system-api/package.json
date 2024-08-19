@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "@types/stripe-v3": "^3.1.28",
+    "async_hooks": "^1.0.0",
     "axios": "^1.4.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
