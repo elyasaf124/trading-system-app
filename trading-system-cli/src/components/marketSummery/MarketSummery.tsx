@@ -52,7 +52,6 @@ const MarketSummery = () => {
             `${baseUrl}/stock/getEarlyStockByDate/${dateStringVarb}?ids=${idCompany}`
           )
           .then(async (res) => {
-            console.log(res.data);
             const stockByDate = await updatedData(res.data.data);
             dispatch(setSelectCompanyByRange(stockByDate));
           });

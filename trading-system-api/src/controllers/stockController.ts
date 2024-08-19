@@ -91,32 +91,32 @@ export const getEarlyStockByDate = async (
   next: NextFunction
 ) => {
   try {
-    const desiredTimestamp = Date.now() / 1000;
+    const desiredTimestamp = Date.now();
     const timeRange = req.params.timeRange;
     const currentDate = new Date();
     currentDate.setHours(0, 0, 0, 0);
-    const currentDateDay = Math.floor(currentDate.getTime() / 1000);
+    const currentDateDay = Math.floor(currentDate.getTime() );
+ 
 
-    let rangeSeconds = 0;
-
+    let rangeMilliseconds = 0;
     if (timeRange === "day" || timeRange === "Today") {
-      rangeSeconds = desiredTimestamp - currentDateDay;
-    } else if (timeRange === "Week") {
-      rangeSeconds = 7 * 24 * 3600;
-    } else if (timeRange === "month" || timeRange === "Month") {
-      rangeSeconds = 30 * 24 * 3600;
-    } else if (timeRange === "6 Month") {
-      rangeSeconds = 6 * 30 * 24 * 3600;
-    } else if (timeRange === "year" || timeRange === "Year") {
-      rangeSeconds = 365 * 24 * 3600;
-    } else if (timeRange === "two-years") {
-      rangeSeconds = 2 * 365 * 24 * 3600;
-    } else if (timeRange === "5 Years") {
-      rangeSeconds = 5 * 365 * 24 * 3600;
-    } else if (timeRange === "All time") {
-      rangeSeconds = desiredTimestamp;
-    }
-
+      rangeMilliseconds = (desiredTimestamp - currentDateDay) ;
+  } else if (timeRange === "Week") {
+      rangeMilliseconds = 7 * 24 * 3600 * 1000;
+  } else if (timeRange === "month" || timeRange === "Month") {
+      rangeMilliseconds = 30 * 24 * 3600 * 1000;
+  } else if (timeRange === "6 Month") {
+      rangeMilliseconds = 6 * 30 * 24 * 3600 * 1000;
+  } else if (timeRange === "year" || timeRange === "Year") {
+      rangeMilliseconds = 365 * 24 * 3600 * 1000;
+  } else if (timeRange === "two-years") {
+      rangeMilliseconds = 2 * 365 * 24 * 3600 * 1000;
+  } else if (timeRange === "5 Years") {
+      rangeMilliseconds = 5 * 365 * 24 * 3600 * 1000;
+  } else if (timeRange === "All time") {
+      rangeMilliseconds = desiredTimestamp * 1000;
+  }
+    
     let ids = req.query.ids;
     if (typeof ids === "string") {
       ids = [ids];
@@ -127,7 +127,6 @@ export const getEarlyStockByDate = async (
     const objectIdIds = ids.map(
       (id) => new mongoose.Types.ObjectId(id as string)
     );
-
     let data: any = await Company.aggregate([
       {
         $match: {
@@ -164,7 +163,7 @@ export const getEarlyStockByDate = async (
                   {
                     $gte: [
                       "$$stock.createdAt",
-                      desiredTimestamp - rangeSeconds,
+                      desiredTimestamp - rangeMilliseconds,
                     ],
                   },
                   { $lt: ["$$stock.createdAt", desiredTimestamp + 86400] },
@@ -191,12 +190,11 @@ export const getEarlyStockByDate = async (
       },
     ]);
 
-    if (timeRange !== "day" && timeRange !== "Today") {
-      console.log(data)
-      data[0].stocks = data[0].stocks.filter((stock: any) => {
-        return stock.lastStockDay === true;
-      });
-    }
+    // if (timeRange !== "day" && timeRange !== "Today") {
+    //   data[0].stocks = data[0].stocks.filter((stock: any) => {
+    //     return stock.lastStockDay === true;
+    //   });
+    // }
 
     res.status(200).json({
       status: "success",

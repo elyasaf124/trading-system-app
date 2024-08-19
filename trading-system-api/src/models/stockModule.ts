@@ -22,19 +22,7 @@ const stockShcema = new mongoose.Schema({
 });
 
 stockShcema.pre("save", function (next) {
-  this.createdAt = Date.now() / 1000;
-  // const oneYearAgoTimestamp = Date.now() - 2 * 365 * 24 * 60 * 60 * 1000;
-  // const randomTimestamp =
-  //   Math.floor(Math.random() * (Date.now() - oneYearAgoTimestamp + 1)) +
-  //   oneYearAgoTimestamp;
-  // this.createdAt = Math.floor(randomTimestamp / 1000);
-  // const randomDate = new Date(randomTimestamp);
-  // const day = String(randomDate.getDate()).padStart(2, "0");
-  // const month = String(randomDate.getMonth() + 1).padStart(2, "0");
-  // const year = randomDate.getFullYear();
-  // const formattedDate = `${day}/${month}/${year}`;
-  // this.dateFormat = formattedDate;
-
+  this.createdAt = Date.now();
   next();
 });
 

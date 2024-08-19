@@ -60,7 +60,7 @@ export const DonCheart = ({ companiesAndStocks }: any) => {
   }
 
   let labels = filterArray.map((data: any) => {
-    const date = new Date(data.createdAt * 1000);
+    const date = new Date(data.createdAt);
     return date.toLocaleString("default", { month: "short" });
   });
 
