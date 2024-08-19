@@ -34,7 +34,7 @@ const randomPriceSocket1 = async () => {
   console.log("Random price socket function called...");
 };
 
-io.on("connection", (socket) => {
+io.on("connection", (socket:any) => {
   console.log("A client connected");
 
   playFunctionCreateStock();
